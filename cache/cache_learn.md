@@ -132,7 +132,7 @@ HTTP1.1中Etag的出现主要是为了解决几个Last-Modified比较难解决�
 
 #### 1.服务器端没有设置HTTP缓存控制头
 
-![image](file:////Users/Cjj/Downloads/cache_learn/no-cache.png)
+![image](https://github.com/Chen-jj/cache_learn/blob/master/cache%2Fassets%2Fimages%2Fno-cache.png)
 由chrome的timeline可见浏览器先抓来了index.html,然后分别再次向服务器请求index.css和aotu.jpeg
 
 此时服务端返回信息只设置了200状态码和ContentType，可见响应头只有几个必要信息：
@@ -166,7 +166,7 @@ index.html的请求头会带有`Cache-Control:max-age=0`字段，意即不管本
 ###### 新建标签页访问、在其它页面的地址栏回车访问
 
 所有设置了expires头的文档这时在有效时间内都是直接读取缓存：
-![image](file:////Users/Cjj/Downloads/cache_learn/expires_1.png)
+![image](https://github.com/Chen-jj/cache_learn/blob/master/cache%2Fassets%2Fimages%2Fexpires_1.png)
 
 #### 3.设置Cache-Control
 
@@ -191,7 +191,7 @@ If-Modified-Since: Sun, 17 Apr 2016 17:37:01 GMT
 ```
 
 此时服务器判断文件在此段时间内无被修改过，返回状态码304与状态信息No Modified，返回体不携带信息。
-![image](file:////Users/Cjj/Downloads/cache_learn/no-modified_1.png)
+![image](https://github.com/Chen-jj/cache_learn/blob/master/cache%2Fassets%2Fimages%2Fno-modified_1.png)
 可以看到此时传输数据大小都为89B，即返回头，返回体为空。
 
 当文档被修改后，用户再去访问，则会抛弃缓存去下载最新的数据，接下来的处理就好像第一次访问一样。
