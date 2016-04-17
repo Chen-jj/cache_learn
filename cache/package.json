@@ -1,0 +1,26 @@
+{
+  "name": "cache",
+  "version": "1.0.0",
+  "description": "浏览器缓存测试demo",
+  "main": "server.js",
+  "dependencies": {
+    "etag": "^1.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "supervisor server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "cjj",
+  "license": "MIT",
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true,
+      "es6": true
+    }
+  }
+}
