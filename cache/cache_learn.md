@@ -190,6 +190,9 @@ index.html的请求头会带有`Cache-Control:max-age=0`字段，意即不管本
 
 这种古怪的行为只在当前标签页会出现，下图为Chrome和Safari各自对应的响应状态：
 
+![image](https://github.com/Chen-jj/cache_learn/blob/master/cache%2Fassets%2Fimages%2Fchrome_no_cache.png)
+
+![image](https://github.com/Chen-jj/cache_learn/blob/master/cache%2Fassets%2Fimages%2Fsafari_no_cache.png)
 
 #### 4.设置Last-Modified
 
