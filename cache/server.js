@@ -33,7 +33,7 @@ http.createServer(function(req, res) {
 
 			if (ifNoneMatch && ifNoneMatch === etag) {
 				res.writeHead(304, "NO Modified", {
-					'Cache-Control': "max-age=20"
+					'Cache-Control': "max-age=no-cache"
 				});
 				res.end();
 			}
@@ -50,10 +50,10 @@ http.createServer(function(req, res) {
 						res.setHead(500, '');
 						res.end(err);
 					} else {
-						var expires = getExpires(20);
+						var expires = getExpires(200);
 
 						//参数：状态码，文件后缀名，expires时间，max-age时间，文件最后修改时间, etag
-						res.setHead(200, fileExt, expires, '', lastModified, etag);
+						res.setHead(200, fileExt, expires, 'no-cache', lastModified, etag);
 						res.write(file, 'binary');
 						res.end();
 					}
