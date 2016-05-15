@@ -3,12 +3,25 @@
 <head>
 	<meta charset="utf-8">
 	<title>index</title>
-	<link rel='stylesheet' type='text/css' href='./css/index.css' />
+	<link rel='stylesheet' type='text/css' href='./css/index.css?v=d324' />
 </head>
 <body>
-	<h1>Hello World！.</h1>
+	<h1>Hello World！</h1>
 	<div>
-		<img src="./images/aotu.jpeg" alt="">
+		<img id="img"  alt="aotu">
 	</div>
 </body>
+<script>
+	var url = "/images/aotu.jpeg";
+
+	// var xmlHttp = new XMLHttpRequest();
+
+	// xmlHttp.open('GET')
+	window.onload = function() {
+		var img = document.getElementById('img');
+		setTimeout(function() {
+			img.setAttribute("src", url);
+		}, 0)
+	}
+</script>
 </html>

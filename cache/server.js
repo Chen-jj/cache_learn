@@ -11,6 +11,10 @@ http.createServer(function(req, res) {
 
 	//文件映射路径
 	var pathname = url.parse(req.url).pathname;
+	if (url.parse(req.url).pathname.split("/")[1] === "list") {
+		getList(req, res);
+		return;
+	}
 	var filePath = path.join('assets', pathname);
 
 	//文件后缀名
@@ -33,7 +37,7 @@ http.createServer(function(req, res) {
 
 			if (ifNoneMatch && ifNoneMatch === etag) {
 				res.writeHead(304, "NO Modified", {
-					'Cache-Control': "max-age=no-cache"
+					//'Cache-Control': "max-age=no-cache"
 				});
 				res.end();
 			}
@@ -50,10 +54,10 @@ http.createServer(function(req, res) {
 						res.setHead(500, '');
 						res.end(err);
 					} else {
-						var expires = getExpires(200);
+						var expires = getExpires(0);
 
 						//参数：状态码，文件后缀名，expires时间，max-age时间，文件最后修改时间, etag
-						res.setHead(200, fileExt, expires, 'no-cache', lastModified, etag);
+						res.setHead(200, fileExt, expires, "max-age=60", lastModified, etag);
 						res.write(file, 'binary');
 						res.end();
 					}
@@ -62,3 +66,11 @@ http.createServer(function(req, res) {
 		});
 	})
 }).listen(8888);
+
+function getList(req, res) {
+	var list = ['apple', 'banana', 'pear', 'orange'];
+	//参数：状态码，文件后缀名，expires时间，max-age时间，文件最后修改时间, etag
+	res.setHead(200, "text", 0, '100', '', '');
+	res.write(list.toString());
+	res.end();
+}
